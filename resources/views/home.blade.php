@@ -6,9 +6,11 @@
     @vite('resources/css/app.css')
   </head>
   <body>
-    <h1 class="text-3xl font-bold underline color">
-      Hello world!
+    @include('navbar')
+
+    <h1 class="text-3xl font-bold underline text-green-700">
+      Tes Tailwind
     </h1>
-    <p class="text-gray-600 dark:text-sky-400">The quick brown fox...</p>
+    <p class="text-green-600 dark:text-sky-400">The quick brown fox...</p>
   </body>
 </html>
