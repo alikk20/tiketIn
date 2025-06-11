@@ -12,13 +12,13 @@ return new class extends Migration {
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('nama');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('nomor_siswa');
-            $table->string('kelas');
+            $table->string('nomor_siswa')->nullable(); // nullable supaya tidak wajib
+            $table->string('kelas')->nullable();
             $table->string('email')->unique();
-            $table->string('telepon');
-            $table->string('foto')->nullable(); // Tambahkan kolom foto
+            $table->string('telepon')->nullable();
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }

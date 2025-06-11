@@ -2,23 +2,24 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AcaraResource\Pages;
-use App\Filament\Resources\AcaraResource\RelationManagers;
-use App\Models\Acara;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Select;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Acara;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\FileUpload;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
+use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\AcaraResource\Pages;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\AcaraResource\RelationManagers;
 
 class AcaraResource extends Resource
 {
@@ -29,13 +30,8 @@ class AcaraResource extends Resource
     {
         return $form->schema([
             FileUpload::make('foto')
-                ->image()
-                ->directory('uploads/siswa')
-                ->preserveFilenames()
-                ->maxSize(2048)
-                ->imageEditor()
-                ->imageResizeMode('cover')
-                ->imageCropAspectRatio('3:4'), // Format vertikal
+                ->label('Foto'),
+                
             TextInput::make('nama')
                 ->label('Nama Acara')
                 ->placeholder('Masukkan nama acara')
@@ -54,10 +50,26 @@ class AcaraResource extends Resource
                 ->label('Lokasi Acara')
                 ->placeholder('Masukkan lokasi acara')
                 ->required(),
+            TextInput::make('stok')
+                ->label('Jumlah tiket')
+                ->placeholder('Jumlah tiket ')
+                ->required(),
+            TextInput::make('harga')
+                ->label('Harga Tiket')
+                ->placeholder('35000')
+                ->prefix('Rp.')
+                ->required(),
             TextInput::make('jenis_acara')
                 ->label('Jenis Acara')
                 ->placeholder('Masukkan jenis acara (misal: seminar, workshop)')
                 ->required(),
+            TextInput::make('notelp')
+                ->label('No Telepon')
+                ->placeholder('8123456790')
+                ->prefix('+62')
+                ->required(),
+            Hidden::make('dibuat_oleh')
+                ->default(auth()->id()),
         ]);
     }
 
@@ -65,12 +77,12 @@ class AcaraResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('foto')
-                    ->width(150)
-                    ->height(200),
+                ImageColumn::make('foto')->circular(),
                 TextColumn::make('nama')->searchable(),
                 TextColumn::make('tanggal')->date(),
                 TextColumn::make('lokasi'),
+                TextColumn::make('harga'),
+                TextColumn::make('stok'),
                 TextColumn::make('jenis_acara'),
             ])
             ->filters([])
@@ -82,19 +94,18 @@ class AcaraResource extends Resource
 
     public static function query(): Builder
     {
-        return parent::query()
-            ->where('dibuat_oleh', auth()->user()->siswa->id);
+        return parent::query()->where('dibuat_oleh', auth()->id());
     }
 
     public static function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['dibuat_oleh'] = auth()->user()->siswa->id;
+        $data['dibuat_oleh'] = auth()->id();
         return $data;
     }
 
     public static function mutateFormDataBeforeSave(array $data): array
     {
-        $data['dibuat_oleh'] = auth()->user()->siswa->id;
+        $data['dibuat_oleh'] = auth()->id();
         return $data;
     }
 

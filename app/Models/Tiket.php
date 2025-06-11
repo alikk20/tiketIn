@@ -12,15 +12,11 @@ class Tiket extends Model
     use HasFactory;
     protected $table = 'tiket';
 
-    protected $fillable = ['id_acara', 'id_siswa', 'tanggal_pembelian', 'kode_tiket', 'status'];
+    protected $fillable = ['id_acara', 'pembeli', 'tanggal_pembelian', 'kode_tiket', 'status'];
 
     public function acara()
     {
         return $this->belongsTo(Acara::class, 'id_acara');
     }
-
-    public function siswa()
-    {
-        return $this->belongsTo(Siswa::class, 'id_siswa');
-    }
+    
 }

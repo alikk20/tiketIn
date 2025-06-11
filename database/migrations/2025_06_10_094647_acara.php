@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->date('tanggal');
             $table->string('lokasi');
             $table->string('jenis_acara');
-            $table->foreignId('dibuat_oleh')->constrained('siswa')->onDelete('cascade');
+            $table->foreignId('dibuat_oleh')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

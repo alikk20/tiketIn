@@ -13,13 +13,12 @@
                 <div>
                     <h2 class="text-lg md:text-xl font-extrabold mb-2 text-gray-900">Feedback and Suggestions</h2>
                     <p class="text-gray-700 text-sm md:text-base">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-                        Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+                        Kami selalu berusaha memberikan layanan terbaik. Jika Anda memiliki ide, kritik, atau saran untuk pengembangan aplikasi, kami sangat menghargainya.
                     </p>
                 </div>
-                <a href="#"
+                <a href="https://wa.me/62851421312300"
                    class="mt-6 block w-full bg-blue-500 hover:blue-700 text-white text-sm font-semibold py-2 rounded text-center hover:bg-blue-700 transition duration-300">
-                    Feedback and Suggestions
+                    Kirim Masukan dan Saran
                 </a>
             </div>
 
@@ -28,13 +27,12 @@
                 <div>
                     <h2 class="text-lg md:text-xl font-extrabold mb-2 text-gray-900">Ticket and Account<br>support</h2>
                     <p class="text-gray-700 text-sm md:text-base">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus.
-                        Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.
+                        Mengalami kendala saat membeli tiket atau mengakses akun? Tim bantuan kami siap membantu Anda menyelesaikan masalah dengan cepat dan mudah.
                     </p>
                 </div>
-                <a href="#"
+                <a href="https://wa.me/62851421312300"
                    class="mt-6 block w-full bg-blue-500 hover:blue-700 text-white text-sm font-semibold py-2 rounded text-center hover:bg-blue-700 transition duration-300">
-                    Go to the help center
+                    Kunjungi Pusat Bantuan
                 </a>
             </div>
         </div>

@@ -12,14 +12,10 @@
         <div class="md:col-span-2">
             <h2 class="text-2xl font-bold text-gray-800 mb-4">About TiketIn</h2>
             <p class="text-gray-600 mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
-                dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula
-                massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est
-                eleifend mi, non fermentum diam nisi sit amet erat.
+                Di lingkungan sekolah, berbagai kegiatan seperti pentas seni, lomba, dan seminar rutin diselenggarakan untuk mendukung kreativitas dan pengembangan diri murid. Namun, sistem pembelian tiket yang masih dilakukan secara manual—seperti pembayaran tunai dan pencatatan di kertas—sering menimbulkan kendala, seperti antrian panjang, risiko kehilangan tiket, pencatatan data peserta yang kurang rapi, dan pengelolaan keuangan yang tidak efisien.
             </p>
             <p class="text-gray-600">
-                Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue.
-                Praesent egestas leo in pede. Praesent blandit odio eu enim.
+                Sebagai solusi atas permasalahan tersebut, dibangunlah sebuah aplikasi pembelian tiket online khusus untuk murid sekolah. Aplikasi ini memudahkan murid membeli tiket secara cepat dan aman melalui perangkat digital, sekaligus membantu panitia dalam mengelola penjualan tiket, memantau peserta, dan membuat laporan keuangan otomatis. Dengan sistem digital ini, administrasi event diharapkan menjadi lebih efisien, transparan, dan profesional.
             </p>
         </div>
 

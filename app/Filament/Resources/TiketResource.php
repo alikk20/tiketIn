@@ -31,16 +31,14 @@ class TiketResource extends Resource
                     'acara',
                     'nama',
                     fn(Builder $query) =>
-                    $query->where('dibuat_oleh', auth()->user()->siswa->id)
+                    $query->where('dibuat_oleh', auth()->id())
                 )
-                ->getOptionLabelFromRecordUsing(fn($record) => "{$record->nama} - {$record->tanggal->format('d M Y')}")
+                ->getOptionLabelFromRecordUsing(fn($record) => "{$record->nama} - " . \Carbon\Carbon::parse($record->tanggal)->format('d M Y'))
                 ->required(),
 
 
-            Select::make('id_siswa')
+            TextInput::make('pembeli')
                 ->label('Pembeli (Siswa)')
-                ->relationship('siswa', 'nama') // pastikan model `Siswa` punya kolom `nama`
-                ->searchable()
                 ->required(),
 
             DatePicker::make('tanggal_pembelian')
@@ -60,7 +58,7 @@ class TiketResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('acara.nama')->label('Acara'),
-                TextColumn::make('siswa.nama')->label('Pembeli'),
+                TextColumn::make('pembeli')->label('Pembeli'),
                 TextColumn::make('tanggal_pembelian')->date(),
                 TextColumn::make('kode_tiket'),
                 TextColumn::make('status')->badge(),
@@ -71,11 +69,10 @@ class TiketResource extends Resource
             ]);
     }
 
-    // Hanya tampilkan tiket dari acara yang dibuat oleh siswa yang login
     public static function query(): Builder
     {
         return parent::query()->whereHas('acara', function ($query) {
-            $query->where('dibuat_oleh', auth()->user()->siswa->id);
+            $query->where('dibuat_oleh', auth()->id());
         });
     }
 
